@@ -40,7 +40,7 @@ jobs:
       
       - name: Wait for MySQL to start
         run: |
-          sleep 15  # Increased wait time to ensure MySQL is fully started
+          sleep 5  # Increased wait time to ensure MySQL is fully started
 
       - name: Setup Env
         run: |
