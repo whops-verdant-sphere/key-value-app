@@ -31,6 +31,7 @@ jobs:
         run: |
           docker run -d \
             --name my-mysql-container \
+            --network my-network \
             -e MYSQL_ALLOW_EMPTY_PASSWORD=false \
             -e MYSQL_ROOT_PASSWORD=password \
             -e MYSQL_USER=root \
@@ -38,14 +39,16 @@ jobs:
             -p 3306:3306 \
             mysql:8.0.25
       
-      - name: Wait Docker to Start
+      - name: Wait for MySQL to start
         run: |
-          sleep 5
+          sleep 5  # Increased wait time to ensure MySQL is fully started
 
       - name: Setup Env
         run: |
           cp .env.ci .env
           cp .env.ci .env.testing
+        env:
+          DB_HOST: my-mysql-container  # Ensuring Laravel connects to the correct MySQL host
 
       - name: Build the Application
         run: |
