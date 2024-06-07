@@ -45,6 +45,10 @@ jobs:
            -e MYSQL_DATABASE=test \
            -p 3306:3306 \
            mysql:latest
+
+      - name: Check docker status
+        run: |
+          docker ps
       
       - name: Migrate the Database
         run: |
