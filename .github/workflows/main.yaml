@@ -31,7 +31,6 @@ jobs:
         run: |
           docker run -d \
             --name my-mysql-container \
-            --network my-network \
             -e MYSQL_ALLOW_EMPTY_PASSWORD=false \
             -e MYSQL_ROOT_PASSWORD=password \
             -e MYSQL_USER=root \
