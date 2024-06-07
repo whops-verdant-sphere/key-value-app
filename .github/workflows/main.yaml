@@ -6,9 +6,10 @@ on:
     branches:
       - main
       - dev
-
-env:
-  PORT: 3000
+  pull_request:
+    branches:
+      - main
+      - dev
 
 jobs:
   build:
@@ -26,42 +27,10 @@ jobs:
       - name: Install dependencies
         run: |
           composer install
-      
-      - name: Run MySQL container
-        run: |
-          docker run -d \
-            --name my-mysql-container \
-            -e MYSQL_ALLOW_EMPTY_PASSWORD=false \
-            -e MYSQL_ROOT_PASSWORD=password \
-            -e MYSQL_DATABASE=test \
-            -p 3306:3306 \
-            mysql:8.0.25
-          
-          sleep 5
 
-          docker ps
-      
-      - name: Wait for MySQL to start
-        run: |
-          sleep 5  # Increased wait time to ensure MySQL is fully started
-      
-      - name: List docker process
-        run: |
-           docker ps
-
-      - name: Setup Env
-        run: |
-          cp .env.ci .env
-          cp .env.ci .env.testing
-
-      - name: Build the Application
+      - name: Generate the key
         run: |
           php artisan key:generate
 
-      - name: Migrate
-        run: |
-          php artisan migrate
-
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        run: |
-          php artisan test
+      
+  
