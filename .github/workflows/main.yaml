@@ -46,7 +46,7 @@ jobs:
       
       - name: Wait for Database to startup
         run: |
-          sleep 5
+          sleep 15
 
       - name: Check docker status
         run: |
