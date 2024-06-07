@@ -49,6 +49,10 @@ jobs:
       - name: Check docker status
         run: |
           docker ps
+
+      - name: Check Network Status
+        run: |
+          netstat -an | grep 3306
       
       - name: Migrate the Database
         run: |
