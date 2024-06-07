@@ -37,6 +37,10 @@ jobs:
             -e MYSQL_DATABASE=test \
             -p 3306:3306 \
             mysql:8.0.25
+          
+          sleep 5
+
+          docker ps
       
       - name: Wait for MySQL to start
         run: |
