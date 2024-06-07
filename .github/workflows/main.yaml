@@ -39,7 +39,12 @@ jobs:
       
       - name: Run MySQL Container
         run: |
-          docker run -d -p 3306:3306 mysql:latest
+          docker run -d \
+           -e MYSQL_ALLOW_EMPTY_PASSWORD=false \
+           -e MYSQL_ROOT_PASSWORD=password \
+           -e MYSQL_DATABASE=test \
+           -p 3306:3306 \
+           mysql:latest
       
       - name: Migrate the Database
         run: |
