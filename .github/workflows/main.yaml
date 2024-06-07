@@ -40,14 +40,12 @@ jobs:
       
       - name: Wait for MySQL to start
         run: |
-          sleep 5  # Increased wait time to ensure MySQL is fully started
+          sleep 15  # Increased wait time to ensure MySQL is fully started
 
       - name: Setup Env
         run: |
           cp .env.ci .env
           cp .env.ci .env.testing
-        env:
-          DB_HOST: my-mysql-container  # Ensuring Laravel connects to the correct MySQL host
 
       - name: Build the Application
         run: |
