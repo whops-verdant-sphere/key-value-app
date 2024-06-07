@@ -29,7 +29,7 @@ jobs:
       
       - name: Run MySQL container
         run: |
-          docker run -d \
+          docker run \
             --name my-mysql-container \
             -e MYSQL_ALLOW_EMPTY_PASSWORD=false \
             -e MYSQL_ROOT_PASSWORD=password \
