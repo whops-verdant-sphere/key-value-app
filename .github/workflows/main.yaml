@@ -31,12 +31,7 @@ jobs:
       - name: Create .env
         run: |
           cp .env.ci .env
-
-          cat .env
-
-      - name: Generate the key
-        run: |
-          php artisan key:generate
+          cp .env.ci .env.testing
 
       
       - name: Run MySQL Container
@@ -61,6 +56,9 @@ jobs:
         run: |
           netstat -an | grep 3306
       
+      - name: Generate the key
+        run: |
+          php artisan key:generate
       
       - name: Migrate the Database
         run: |
