@@ -38,6 +38,9 @@ jobs:
             -p 3306:3306 \
             mysql:8.0.25
       
+      - name: Wait Docker to Start
+        run: |
+          sleep 5
 
       - name: Setup Env
         run: |
