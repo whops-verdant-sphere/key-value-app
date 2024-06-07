@@ -37,4 +37,17 @@ jobs:
           php artisan key:generate
 
       
-  
+      - name: Run MySQL Container
+        run: |
+          docker run -d -p 3306:3306 mysql:latest
+      
+      - name: Migrate the Database
+        run: |
+          php artisan migrate
+      
+      - name: Run Unit Testing
+        run: |
+          php artisan test
+
+      
+   
