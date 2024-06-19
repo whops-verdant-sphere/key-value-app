@@ -48,10 +48,6 @@ jobs:
         run: |
           php artisan key:generate
 
-      - name: "Wait for db to startup"
-        run: |
-          sleep 15
-
       - name: "check docker status"
         run: |
           docker ps
