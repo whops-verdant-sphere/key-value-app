@@ -46,6 +46,10 @@ jobs:
            -e MYSQL_DATABASE=test \
            mysql:latest
 
+      - name: "Wait for db to startup"
+        run: |
+          sleep 15
+
       - name: "check docker status"
         run: |
           docker ps
