@@ -46,6 +46,10 @@ jobs:
            -e MYSQL_DATABASE=test \
            mysql:latest
 
+      - name: "check docker status"
+        run: |
+          docker ps
+
       - name: "Migrate the DB"
         run: |
           php artisan migrate
