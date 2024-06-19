@@ -15,8 +15,19 @@ jobs:
   build:
     name: "Build Laraval App"
     runs-on: ubuntu-latest
-    steps:
+    services:
+      mysql: 
+        image: mysql:latest
+          port:
+            - 3306:3306
+          env:
+            MYSQL_DATABASE: test
+            MYSQL_USERNAME: root
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_ALLOW_EMPTY_PASSWORD: false
 
+
+    steps:
       - name: "Setup PHP"
         uses: shivammathur/setup-php@v2
         with:
@@ -36,15 +47,6 @@ jobs:
       - name: "Build the app"
         run: |
           php artisan key:generate
-
-      - name: "Run MySQL Container"
-        run: |
-          docker run -d \
-           -p 3306:3306 \
-           -e MYSQL_ALLOW_EMPTY_PASSWORD=false \
-           -e MYSQL_ROOT_PASSWORD=password \
-           -e MYSQL_DATABASE=test \
-           mysql:latest
 
       - name: "Wait for db to startup"
         run: |
