@@ -41,10 +41,10 @@ jobs:
         run: |
           docker run -p 3306:3306 -d mysql:latest
 
-      -name: "Migrate the DB"
+      - name: "Migrate the DB"
         run: |
           php artisan migrate
 
-      -name: "Run PHPUnit Tests"
+      - name: "Run PHPUnit Tests"
         run: |
           php artisan test
