@@ -18,13 +18,13 @@ jobs:
     services:
       mysql: 
         image: mysql:latest
-          ports:
-            - 3306:3306
-          env:
-            MYSQL_DATABASE: test
-            MYSQL_USERNAME: root
-            MYSQL_ROOT_PASSWORD: password
-            MYSQL_ALLOW_EMPTY_PASSWORD: false
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_DATABASE: test
+          MYSQL_USERNAME: root
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
 
 
     steps:
