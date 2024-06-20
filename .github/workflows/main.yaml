@@ -70,6 +70,10 @@ jobs:
         with:
           php-version: "8.3"
 
+      - name: "Setup env"
+        run: |
+          cp .env.ci .env
+
       - name: "Migrate the DB"
         run: |
           php artisan migrate
