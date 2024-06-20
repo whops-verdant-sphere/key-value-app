@@ -48,8 +48,8 @@ jobs:
   test:
     name: "Test the app"
       runs-on: ubuntu-latest
-        needs: [build]
-        services:
+      needs: [build]
+      services:
         mysql: 
           image: mysql:latest
           ports:
@@ -59,20 +59,21 @@ jobs:
             MYSQL_USERNAME: root
             MYSQL_ROOT_PASSWORD: password
             MYSQL_ALLOW_EMPTY_PASSWORD: false
-        steps:
 
-          - name: "Checkout"
-            uses: actions/checkout@v4
+      steps:
 
-          - name: "Setup PHP"
-            uses: shivammathur/setup-php@v2
-            with:
-              php-version: "8.3"
+        - name: "Checkout"
+          uses: actions/checkout@v4
 
-          - name: "Migrate the DB"
-            run: |
-              php artisan migrate
+        - name: "Setup PHP"
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: "8.3"
 
-          - name: "Run Unit Tests"
-            run: |
-              php artisan test
+        - name: "Migrate the DB"
+          run: |
+            php artisan migrate
+
+        - name: "Run Unit Tests"
+          run: |
+            php artisan test
