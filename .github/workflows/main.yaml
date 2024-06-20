@@ -33,17 +33,9 @@ jobs:
         run: |
           cp .env.ci .env
 
-      - name: "Build the app"
+      - name: "generate the key"
         run: |
           php artisan key:generate
-
-      - name: "check docker status"
-        run: |
-          docker ps
-
-      - name: "Migrate the DB"
-        run: |
-          php artisan migrate
 
   test:
     name: "Test the app"
