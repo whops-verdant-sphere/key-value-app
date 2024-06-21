@@ -24,6 +24,9 @@ jobs:
 
       steps:
 
+        - name: "Checkout"
+          uses: actions/checkout@v4
+
         - name: "Prepare Composition Action"
           uses: ./.github/prepare/action.yaml
           with:
