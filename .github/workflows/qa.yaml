@@ -11,8 +11,7 @@ jobs:
       version: "8.3"
 
   build_82:
-    name: "Test"
-    needs: [build]
+    name: "Build"
     uses: ./.github/workflows/build.yaml
     with:
       version: "8.2"
