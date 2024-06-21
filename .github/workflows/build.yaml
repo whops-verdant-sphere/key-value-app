@@ -13,13 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Setup PHP"
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{inputs.version}}
 
-      - name: "Checkout"
-        uses: actions/checkout@v4
+      - name: "Prepare Composition"
+        uses: ./.github/prepare/action.yaml
+        with:
+          version: ${{input.version}}
 
       - name: "Install dependencies"
         run: |

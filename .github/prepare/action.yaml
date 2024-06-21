@@ -1,0 +1,19 @@
+name: "Prepare Action"
+description: "Prepare Composition Action"
+inputs: 
+  version:  
+    description: "PHP Version"
+    required: true
+
+runs:
+  using: composite
+
+  steps:
+    
+    - name: "Checkout"
+      uses: actions/checkout@v4
+
+    - name: "Setup PHP"
+      uses: shivammathur/setup-php@v2
+      with:
+          php-version: ${{inputs.version}}

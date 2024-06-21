@@ -1,6 +1,11 @@
 name: "Test Laraval App"
 
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
 
 jobs:
   test:
@@ -19,13 +24,10 @@ jobs:
 
       steps:
 
-        - name: "Checkout"
-          uses: actions/checkout@v4
-
-        - name: "Setup PHP"
-          uses: shivammathur/setup-php@v2
+        - name: "Prepare Composition Action"
+          uses: ./.github/prepare/action.yaml
           with:
-            php-version: "8.3"
+            version: ${{inputs.version}}
 
         - name: "Restore the cache"
           id: cache
