@@ -29,7 +29,7 @@ jobs:
         run: |
           composer install
 
-      - name: "Cache the vendor"
+      - name: "Create cache for vendor"
         uses: actions/cache@v4
         with:
           key: php-vendor-cache
@@ -68,11 +68,18 @@ jobs:
         with:
           php-version: "8.3"
 
-      - name: "Cache the vendor"
+      - name: "Restore the cache"
+        id: cache
+        if: jobs.test.steps
         uses: actions/cache@v4
         with:
           path: ./vendor
           key: php-vendor-cache
+
+      - name: "Install composer"
+        if: steps.cache.outputs.cache-hit != true
+        run: |
+          composer install
           
       - name: "Setup env"
         run: |
