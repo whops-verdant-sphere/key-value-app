@@ -71,7 +71,7 @@ jobs:
       - name: "Cache the vendor"
         uses: actions/cache@v4
         with:
-          path: ./vendorl
+          path: ./vendor
           key: php-vendor-cache
           
       - name: "Setup env"
