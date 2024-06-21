@@ -8,11 +8,11 @@ jobs:
     name: build
     uses: ./.github/workflows/build.yaml
     with:
-      version: 8.3
+      version: "8.3"
 
   test:
     name: Test
     needs: [build]
     uses: ./.github/workflows/test.yaml
     with:
-      version: 8.2
+      version: "8.2"
