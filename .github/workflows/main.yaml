@@ -70,7 +70,6 @@ jobs:
 
       - name: "Restore the cache"
         id: cache
-        if: jobs.test.steps
         uses: actions/cache@v4
         with:
           path: ./vendor
