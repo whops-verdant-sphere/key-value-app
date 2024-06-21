@@ -1,16 +1,16 @@
-name: "QA Test"
+name: "QA Workflow"
 
 #trigger manually
 on: workflow_dispatch
 
 jobs:
-  build:
-    name: "build"
+  build_83:
+    name: "Build"
     uses: ./.github/workflows/build.yaml
     with:
       version: "8.3"
 
-  test:
+  build_82:
     name: "Test"
     needs: [build]
     uses: ./.github/workflows/build.yaml
