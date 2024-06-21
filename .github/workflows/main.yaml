@@ -3,9 +3,6 @@ name: "Main Workflow"
 #trigger
 on:
   push:
-    branches:
-      - main
-      - dev
   pull_request:
     branches:
       - main
