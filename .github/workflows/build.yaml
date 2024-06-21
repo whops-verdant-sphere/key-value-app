@@ -1,6 +1,5 @@
 name: Build Laravel App
 
-
 on: workflow_call
 
 jobs:
