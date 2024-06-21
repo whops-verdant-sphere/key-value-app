@@ -1,4 +1,4 @@
-name: "Test Workflow"
+name: "Test Laraval App"
 
 on: workflow_call
 
