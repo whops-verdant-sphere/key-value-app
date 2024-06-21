@@ -32,7 +32,7 @@ jobs:
       - name: "Create cache for vendor"
         uses: actions/cache@v4
         with:
-          key: php-vendor-cache
+          key: ${{ github.sha }}-php-vendor-cache
           path: ./vendor
 
       - name: "Setup env"
@@ -73,10 +73,10 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ./vendor
-          key: php-vendor-cache
+          key: ${{ github.sha }}-php-vendor-cache
 
       - name: "Install composer"
-        if: steps.cache.outputs.cache-hit != true
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           composer install
           
