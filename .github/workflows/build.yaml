@@ -17,7 +17,7 @@ jobs:
       - name: "Prepare Composition"
         uses: ./.github/prepare/action.yaml
         with:
-          version: ${{input.version}}
+          version: ${{inputs.version}}
 
       - name: "Install dependencies"
         run: |
