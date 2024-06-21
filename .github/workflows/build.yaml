@@ -16,7 +16,7 @@ jobs:
       - name: "Setup PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ inputs.version }}
+          php-version: ${{inputs.version}}
 
       - name: "Checkout"
         uses: actions/checkout@v4

@@ -5,13 +5,13 @@ on: workflow_dispatch
 
 jobs:
   build:
-    name: build
+    name: "build"
     uses: ./.github/workflows/build.yaml
     with:
       version: "8.3"
 
   test:
-    name: Test
+    name: "Test"
     needs: [build]
     uses: ./.github/workflows/test.yaml
     with:
