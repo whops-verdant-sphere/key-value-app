@@ -29,6 +29,12 @@ jobs:
         run: |
           composer install
 
+      - name: "Cache the vendor"
+        uses: actions/cache@v4
+        with:
+          key: php-vendor-cache
+          path: ./vendor
+
       - name: "Setup env"
         run: |
           cp .env.ci .env
@@ -62,10 +68,12 @@ jobs:
         with:
           php-version: "8.3"
 
-      - name: "Install dependencies"
-        run: |
-          composer install
-
+      - name: "Cache the vendor"
+        uses: actions/cache@v4
+        with:
+          path: ./vendorl
+          key: php-vendor-cache
+          
       - name: "Setup env"
         run: |
           cp .env.ci .env
