@@ -13,35 +13,7 @@ on:
 
 jobs:
   build:
-    name: "Build Laraval App"
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: "Setup PHP"
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.2"
-
-      - name: "Checkout"
-        uses: actions/checkout@v4
-
-      - name: "Install dependencies"
-        run: |
-          composer install
-
-      - name: "Create cache for vendor"
-        uses: actions/cache@v4
-        with:
-          key: ${{ github.sha }}-php-vendor-cache
-          path: ./vendor
-
-      - name: "Setup env"
-        run: |
-          cp .env.ci .env
-
-      - name: "generate the key"
-        run: |
-          php artisan key:generate
+    uses: ./.github/workflows/build.yaml
 
   test:
     name: "Test the app"
