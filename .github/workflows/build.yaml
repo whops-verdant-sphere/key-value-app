@@ -1,4 +1,4 @@
-name: "Build Laraval App"
+name: Build Laraval App
 
 on: 
   workflow_call:
