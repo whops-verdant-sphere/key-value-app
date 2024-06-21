@@ -1,4 +1,4 @@
-name: Build Laravel App
+name: "Build workflow"
 
 on: 
   workflow_call:
