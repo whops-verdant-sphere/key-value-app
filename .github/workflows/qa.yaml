@@ -1,0 +1,17 @@
+name: "QA Workflow"
+
+#trigger manually
+on: workflow_dispatch
+
+jobs:
+  build_83:
+    name: "Build"
+    uses: ./.github/workflows/build.yaml
+    with:
+      version: "8.3"
+
+  build_82:
+    name: "Build"
+    uses: ./.github/workflows/build.yaml
+    with:
+      version: "8.2"
