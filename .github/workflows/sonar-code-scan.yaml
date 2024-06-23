@@ -32,7 +32,7 @@ jobs:
           - name: Set up SonarQube Scanner
             uses: sonarsource/sonarcloud-github-action@master
             env:
-               SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
                GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+               SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
