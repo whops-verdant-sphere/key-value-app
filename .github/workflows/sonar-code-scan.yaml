@@ -39,5 +39,9 @@ jobs:
             env:
                GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            with:
+               args: >
+                    -Dsonar.organization=whops-verdant-sphere
+                    -Dsonar.projectKey=whops-verdant-sphere_key-value-app
 
 
