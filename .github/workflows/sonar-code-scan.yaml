@@ -35,7 +35,7 @@ jobs:
                composer install
 
           - name: Set up SonarQube Scanner
-            uses: sonarsource/sonarcloud-github-action@2.3.0
+            uses: sonarsource/sonarcloud-github-action@v2.3.0
             env:
                GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
