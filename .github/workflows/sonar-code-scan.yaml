@@ -7,7 +7,6 @@ on:
                     required: true
                     type: string
           secrets:
-               GIT_TOKEN:
                SONAR_TOKEN:
                     required: true
 
@@ -41,12 +40,7 @@ jobs:
           - name: Set up SonarQube Scanner
             uses: sonarsource/sonarcloud-github-action@v2.3.0
             env:
-               GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+               # GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-            with:
-               args: >
-                    -Dsonar.organization=whops-verdant-sphere
-                    -Dsonar.projectKey=whops-verdant-sphere_key-value-app
-                    -sonar.host.url= 'sonarcloud.io'
 
 
