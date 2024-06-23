@@ -62,4 +62,4 @@ jobs:
             args: >
                   -Dsonar.organization=whops-verdant-sphere
                   -Dsonar.projectKey=whops-verdant-sphere_key-value-app
-                  -sonar.host.url= 'sonarcloud.io'
+                  # -sonar.host.url= 'sonarcloud.io'
