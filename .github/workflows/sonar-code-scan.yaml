@@ -16,9 +16,9 @@ jobs:
                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
                GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
 
-          #   with:
-          #      args: >
-          #           Dsonar.organization=whops-verdant-sphere
-          #           -Dsonar.projectKey=key-value-app
+            with:
+               args: >
+                    Dsonar.organization=whops-verdant-sphere
+                    -Dsonar.projectKey=key-value-app
 
 
