@@ -1,6 +1,11 @@
 name: Sonar Code Test
 
-on: workflow_call
+on: 
+     workflow_call:
+          inputs:
+               version:
+                    required: true
+                    type: string
 
 jobs:
 
@@ -8,17 +13,29 @@ jobs:
           runs-on: ubuntu-latest
           steps:
           - name: Checkout
-            uses: actions/checkout@v4
+            uses: actions/checkout@
+            
+          - name: "Prepare Composition Action"
+            uses: ./.github/actions/prepare
+            with:
+              version: ${{inputs.version}}
+
+          - name: "Restore the cache"
+            id: cache
+            uses: actions/cache@v4
+            with:
+               path: ./vendor
+               key: ${{ github.sha }}-php-vendor-cache
+
+          - name: "Install composer"
+            if: steps.cache.outputs.cache-hit != 'true'
+            run: |
+               composer install
 
           - name: Set up SonarQube Scanner
             uses: sonarsource/sonarcloud-github-action@master
             env:
                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-               GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
-
-            with:
-               args: >
-                    -Dsonar.organization=whops-verdant-sphere
-                    -Dsonar.projectKey=key-value-app
+               # GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
 
 
