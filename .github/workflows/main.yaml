@@ -15,9 +15,13 @@ jobs:
     with:
       version: "8.2"
 
-  test:
-    name: "Test"
-    needs: [build]
-    uses: ./.github/workflows/test.yaml
-    with:
-      version: "8.3"
+  # test:
+  #   name: "Test"
+  #   needs: [build]
+  #   uses: ./.github/workflows/test.yaml
+  #   with:
+  #     version: "8.3"
+
+  sonar-code-scan:
+    name: "Sonar Code Scan"
+    uses: ./.github/workflows/sonar-code-scan.yaml

@@ -1,0 +1,24 @@
+name: Sonar Code Test
+
+on: workflow_call
+
+jobs:
+
+     sonar-code-scan:
+          runs-on: ubuntu-latest
+          steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+
+          - name: Set up SonarQube Scanner
+            uses: sonarsource/sonarcloud-github-action@master
+            env:
+               SONAR_TOKEN: ${{ secrets.SONAR_CLOUD }}
+               GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+            with:
+               args: >
+                    Dsonar.organization=whops-verdant-sphere
+                    -Dsonar.projectKey=key-value-app
+
+
