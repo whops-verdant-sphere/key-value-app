@@ -28,4 +28,4 @@ jobs:
     uses: ./.github/workflows/sonar-code-scan.yaml
     with:
       version: "8.4"
-      SONAR_TOKEN: secrets.SONAR_TOKEN
+      SONAR_TOKEN: SONAR_TOKEN
