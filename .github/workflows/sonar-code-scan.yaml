@@ -18,7 +18,7 @@ jobs:
 
             with:
                args: >
-                    Dsonar.organization=whops-verdant-sphere
+                    -Dsonar.organization=whops-verdant-sphere
                     -Dsonar.projectKey=key-value-app
 
 
