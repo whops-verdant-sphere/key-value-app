@@ -26,5 +26,3 @@ jobs:
     name: "Sonar Code Scan"
     needs: [build]
     uses: ./.github/workflows/sonar-code-scan.yaml
-    with:
-      version: "8.2"

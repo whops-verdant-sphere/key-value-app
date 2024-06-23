@@ -1,11 +1,6 @@
 name: Sonar Code Test
 
-on: 
-     workflow_call:
-          inputs:
-               version:
-                    required: true
-                    type: string
+on: workflow_call
 
 jobs:
 
@@ -13,7 +8,9 @@ jobs:
           runs-on: ubuntu-latest
           steps:
           - name: Checkout
-            uses: actions/checkout@4
+            uses: actions/checkout@v4
+            with:
+               fetch-depth: 0
             
           # - name: "Prepare Composition Action"
           #   uses: ./.github/actions/prepare
