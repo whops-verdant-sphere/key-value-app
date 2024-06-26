@@ -1,0 +1,39 @@
+name: Main Workflow
+
+#trigger
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+permissions:
+  security-events: write
+
+jobs:
+  build:
+    name: "build"
+    uses: ./.github/workflows/build.yaml
+    with:
+      version: "8.2"
+
+  # test:
+  #   name: "Test"
+  #   needs: [build]
+  #   uses: ./.github/workflows/test.yaml
+  #   with:
+  #     version: "8.3"
+
+  sonar-code-scan:
+    name: "Sonar Code Scan"
+    needs: [build]
+    uses: ./.github/workflows/sonar-code-scan.yaml
+    with:
+      version: "8.4"
+    secrets: inherit
+
+  trivy-fs-scan:
+    name: "Trivy FS Scan"
+    needs: [sonar-code-scan]
+    uses: ./.github/workflows/trivy-fs-scan.yaml

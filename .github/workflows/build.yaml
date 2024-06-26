@@ -1,0 +1,41 @@
+name: Build Laraval App
+
+on: 
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: "Build Laraval App"
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Prepare Composition"
+        uses: ./.github/actions/prepare
+        with:
+          version: ${{inputs.version}}
+
+      - name: "Install dependencies"
+        run: |
+          composer install
+
+      - name: "Create cache for vendor"
+        uses: actions/cache@v4
+        with:
+          key: ${{ github.sha }}-php-vendor-cache
+          path: ./vendor
+
+      - name: "Setup env"
+        run: |
+          cp .env.ci .env
+
+      - name: "generate the key"
+        run: |
+          php artisan key:generate
