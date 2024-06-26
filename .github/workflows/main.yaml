@@ -8,6 +8,10 @@ on:
       - main
       - dev
 
+permissions:
+  actions: read
+  security-events: write
+
 jobs:
   build:
     name: "build"
