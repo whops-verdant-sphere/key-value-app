@@ -29,3 +29,8 @@ jobs:
     with:
       version: "8.4"
     secrets: inherit
+
+  trivy-fs-scan:
+    name: "Trivy FS Scan"
+    needs: [build]
+    uses: ./.github/workflows/trivy-fs-scan.yaml
