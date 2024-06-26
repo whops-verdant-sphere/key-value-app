@@ -32,5 +32,5 @@ jobs:
 
   trivy-fs-scan:
     name: "Trivy FS Scan"
-    needs: [build]
+    needs: [sonar-code-scan]
     uses: ./.github/workflows/trivy-fs-scan.yaml
